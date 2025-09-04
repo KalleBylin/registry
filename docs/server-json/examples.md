@@ -572,7 +572,6 @@ Some CLI tools bundle an MCP server, without a standalone MCP package or a publi
       "registry_base_url": "https://registry.npmjs.org",
       "identifier": "snyk",
       "version": "1.1298.0",
-      "runtime_hint": "npx",
       "package_arguments": [
         { "type": "positional", "value": "mcp" },
         {
