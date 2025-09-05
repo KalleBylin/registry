@@ -21,6 +21,9 @@
       "registry_base_url": "https://registry.npmjs.org",
       "identifier": "@modelcontextprotocol/server-brave-search",
       "version": "1.0.2",
+      "transport": {
+        "type": "stdio"
+      },
       "environment_variables": [
         {
           "name": "BRAVE_API_KEY",
@@ -98,6 +101,9 @@ Suppose your MCP server application requires a `mcp start` CLI arguments to star
       "registry_base_url": "https://api.nuget.org",
       "identifier": "Knapcode.SampleMcpServer",
       "version": "0.4.0-beta",
+      "transport": {
+        "type": "stdio"
+      },
       "package_arguments": [
         {
           "type": "positional",
@@ -147,6 +153,9 @@ This will essentially instruct the MCP client to execute `dnx Knapcode.SampleMcp
       "registry_base_url": "https://registry.npmjs.org",
       "identifier": "@modelcontextprotocol/server-filesystem",
       "version": "1.0.2",
+      "transport": {
+        "type": "stdio"
+      },
       "package_arguments": [
         {
           "type": "positional",
@@ -170,6 +179,9 @@ This will essentially instruct the MCP client to execute `dnx Knapcode.SampleMcp
       "registry_base_url": "https://docker.io",
       "identifier": "mcp/filesystem",
       "version": "1.0.2",
+      "transport": {
+        "type": "stdio"
+      },
       "runtime_arguments": [
         {
           "type": "named",
@@ -239,7 +251,7 @@ This will essentially instruct the MCP client to execute `dnx Knapcode.SampleMcp
   },
   "remotes": [
     {
-      "transport_type": "sse",
+      "type": "sse",
       "url": "http://mcp-fs.anonymous.modelcontextprotocol.io/sse"
     }
   ],
@@ -279,6 +291,9 @@ This will essentially instruct the MCP client to execute `dnx Knapcode.SampleMcp
       "identifier": "weather-mcp-server",
       "version": "0.5.0",
       "runtime_hint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
       "environment_variables": [
         {
           "name": "WEATHER_API_KEY",
@@ -332,6 +347,9 @@ The `dnx` tool ships with the .NET 10 SDK, starting with Preview 6.
       "identifier": "Knapcode.SampleMcpServer",
       "version": "0.5.0",
       "runtime_hint": "dnx",
+      "transport": {
+        "type": "stdio"
+      },
       "environment_variables": [
         {
           "name": "WEATHER_CHOICES",
@@ -378,6 +396,9 @@ The `dnx` tool ships with the .NET 10 SDK, starting with Preview 6.
       "registry_base_url": "https://docker.io",
       "identifier": "example/database-manager-mcp",
       "version": "3.1.0",
+      "transport": {
+        "type": "stdio"
+      },
       "runtime_arguments": [
         {
           "type": "named",
@@ -489,6 +510,9 @@ The `dnx` tool ships with the .NET 10 SDK, starting with Preview 6.
       "identifier": "@example/hybrid-mcp-server",
       "version": "1.5.0",
       "runtime_hint": "npx",
+      "transport": {
+        "type": "stdio"
+      },
       "package_arguments": [
         {
           "type": "named",
@@ -506,7 +530,7 @@ The `dnx` tool ships with the .NET 10 SDK, starting with Preview 6.
   ],
   "remotes": [
     {
-      "transport_type": "sse",
+      "type": "sse",
       "url": "https://mcp.anonymous.modelcontextprotocol.io/sse",
       "headers": [
         {
@@ -528,7 +552,7 @@ The `dnx` tool ships with the .NET 10 SDK, starting with Preview 6.
       ]
     },
     {
-      "transport_type": "streamable-http",
+      "type": "streamable-http",
       "url": "https://mcp.anonymous.modelcontextprotocol.io/http"
     }
   ],
@@ -570,7 +594,10 @@ The `dnx` tool ships with the .NET 10 SDK, starting with Preview 6.
       "registry_base_url": "https://github.com",
       "identifier": "https://github.com/modelcontextprotocol/text-editor-mcpb/releases/download/v1.0.2/text-editor.mcpb",
       "version": "1.0.2",
-      "file_sha256": "fe333e598595000ae021bd27117db32ec69af6987f507ba7a63c90638ff633ce"
+      "file_sha256": "fe333e598595000ae021bd27117db32ec69af6987f507ba7a63c90638ff633ce",
+      "transport": {
+        "type": "stdio"
+      }
     }
   ],
   "_meta": {
@@ -612,6 +639,9 @@ This example shows an MCPB (MCP Bundle) package that:
       "registry_base_url": "https://registry.npmjs.org",
       "identifier": "@legacy/old-weather-server",
       "version": "0.9.5",
+      "transport": {
+        "type": "stdio"
+      },
       "environment_variables": [
         {
           "name": "WEATHER_API_KEY",
