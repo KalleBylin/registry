@@ -122,6 +122,9 @@ func IsValidSubfolderPath(path string) bool {
 		}
 	}
 
+	return true
+}
+
 // IsValidRemoteURL checks if a URL is valid for remotes (stricter than packages - no localhost allowed)
 func IsValidRemoteURL(rawURL string) bool {
 	// First check basic URL structure
