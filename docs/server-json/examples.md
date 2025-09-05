@@ -69,7 +69,10 @@ For MCP servers located within a subdirectory of a larger repository (monorepo s
       "registry_type": "npm",
       "registry_base_url": "https://registry.npmjs.org",
       "identifier": "@modelcontextprotocol/everything",
-      "version": "0.6.2"
+      "version": "0.6.2",
+      "transport": {
+        "type": "stdio"
+      }
     }
   ],
   "_meta": {
