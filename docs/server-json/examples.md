@@ -564,7 +564,7 @@ Some CLI tools bundle an MCP server, without a standalone MCP package or a publi
   "description": "MCP server provided by the Snyk CLI",
   "status": "active",
   "version_detail": {
-    "version": ">=1.1298.0"
+    "version": "1.1298.0"
   },
   "packages": [
     {
