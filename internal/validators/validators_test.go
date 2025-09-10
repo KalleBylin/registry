@@ -228,6 +228,48 @@ func TestValidate(t *testing.T) {
 			expectedError: "invalid website URL:",
 		},
 		{
+			name: "server with website URL that matches namespace domain",
+			serverDetail: apiv0.ServerJSON{
+				Name:        "com.example/test-server",
+				Description: "A test server",
+				Repository: model.Repository{
+					URL:    "https://github.com/owner/repo",
+					Source: "github",
+				},
+				Version:    "1.0.0",
+				WebsiteURL: "https://example.com/docs",
+			},
+			expectedError: "",
+		},
+		{
+			name: "server with website URL subdomain that matches namespace",
+			serverDetail: apiv0.ServerJSON{
+				Name:        "com.example/test-server",
+				Description: "A test server",
+				Repository: model.Repository{
+					URL:    "https://github.com/owner/repo",
+					Source: "github",
+				},
+				Version:    "1.0.0",
+				WebsiteURL: "https://docs.example.com/mcp",
+			},
+			expectedError: "",
+		},
+		{
+			name: "server with website URL that does not match namespace",
+			serverDetail: apiv0.ServerJSON{
+				Name:        "com.example/test-server",
+				Description: "A test server",
+				Repository: model.Repository{
+					URL:    "https://github.com/owner/repo",
+					Source: "github",
+				},
+				Version:    "1.0.0",
+				WebsiteURL: "https://different.com/docs",
+			},
+			expectedError: "website URL https://different.com/docs does not match namespace com.example/test-server",
+		},
+		{
 			name: "package with spaces in name",
 			serverDetail: apiv0.ServerJSON{
 				Name:        "com.example/test-server",
