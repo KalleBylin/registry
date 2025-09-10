@@ -23,10 +23,10 @@ The official registry has some more restrictions on top of this. See the [offici
 ```json
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
-  "name": "io.modelcontextprotocol/brave-search",
+  "name": "io.modelcontextprotocol.anonymous/brave-search",
   "description": "MCP server for Brave Search API integration",
   "status": "active",
-  "website_url": "https://modelcontextprotocol.io/examples",
+  "website_url": "https://anonymous.modelcontextprotocol.io/examples",
   "repository": {
     "url": "https://github.com/modelcontextprotocol/servers",
     "source": "github"
@@ -662,10 +662,10 @@ For MCP servers that follow a custom installation path or are embedded in applic
 ```json
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
-  "name": "com.figma/dev-mode-mcp",
-  "description": "Figma Dev Mode MCP server exposed by the Figma Desktop app",
+  "name": "io.modelcontextprotocol.anonymous/embedded-mcp",
+  "description": "MCP server embedded in a Desktop app",
   "status": "active",
-  "website_url": "https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Dev-Mode-MCP-Server",
+  "website_url": "https://anonymous.modelcontextprotocol.io/embedded-mcp-guide",
   "version": "0.1.0"
 }
 ```
