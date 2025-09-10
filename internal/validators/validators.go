@@ -24,6 +24,11 @@ func ValidateServerJSON(serverJSON *apiv0.ServerJSON) error {
 		return err
 	}
 
+	// Validate website URL if provided
+	if err := validateWebsiteURL(serverJSON.WebsiteURL); err != nil {
+		return err
+	}
+
 	// Validate all packages (basic field validation)
 	// Detailed package validation (including registry checks) is done during publish
 	for _, pkg := range serverJSON.Packages {
@@ -62,6 +67,31 @@ func validateRepository(obj *model.Repository) error {
 	// validate subfolder if present
 	if obj.Subfolder != "" && !IsValidSubfolderPath(obj.Subfolder) {
 		return fmt.Errorf("%w: %s", ErrInvalidSubfolderPath, obj.Subfolder)
+	}
+
+	return nil
+}
+
+func validateWebsiteURL(websiteURL string) error {
+	// Skip validation if website URL is not provided (optional field)
+	if websiteURL == "" {
+		return nil
+	}
+
+	// Parse the URL to ensure it's valid
+	parsedURL, err := url.Parse(websiteURL)
+	if err != nil {
+		return fmt.Errorf("invalid website URL: %w", err)
+	}
+
+	// Ensure it's an absolute URL with valid scheme
+	if !parsedURL.IsAbs() {
+		return fmt.Errorf("website URL must be absolute (include scheme): %s", websiteURL)
+	}
+
+	// Only allow HTTP/HTTPS schemes for security
+	if parsedURL.Scheme != "http" && parsedURL.Scheme != "https" {
+		return fmt.Errorf("website URL must use http or https scheme: %s", websiteURL)
 	}
 
 	return nil
