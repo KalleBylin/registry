@@ -107,6 +107,11 @@ func validatePackageField(obj *model.Package) error {
 		return ErrPackageNameHasSpaces
 	}
 
+	// Validate version string
+	if err := validateVersion(obj.Version); err != nil {
+		return err
+	}
+
 	// Validate runtime arguments
 	for _, arg := range obj.RuntimeArguments {
 		if err := validateArgument(&arg); err != nil {
@@ -125,6 +130,16 @@ func validatePackageField(obj *model.Package) error {
 	availableVariables := collectAvailableVariables(obj)
 	if err := validatePackageTransport(&obj.Transport, availableVariables); err != nil {
 		return fmt.Errorf("invalid transport: %w", err)
+	}
+
+	return nil
+}
+
+// validateVersion validates the version string
+// NB: we decided that we would not enforce strict semver for version strings
+func validateVersion(version string) error {
+	if version == "latest" {
+		return ErrReservedVersionString
 	}
 
 	return nil
@@ -179,12 +194,12 @@ func validateArgumentValueFields(name, value, defaultValue string) error {
 // collectAvailableVariables collects all available template variables from a package
 func collectAvailableVariables(pkg *model.Package) []string {
 	var variables []string
-	
+
 	// Add environment variable names
 	for _, env := range pkg.EnvironmentVariables {
 		variables = append(variables, env.Name)
 	}
-	
+
 	// Add runtime argument names and value hints
 	for _, arg := range pkg.RuntimeArguments {
 		if arg.Name != "" {
@@ -194,7 +209,7 @@ func collectAvailableVariables(pkg *model.Package) []string {
 			variables = append(variables, arg.ValueHint)
 		}
 	}
-	
+
 	// Add package argument names and value hints
 	for _, arg := range pkg.PackageArguments {
 		if arg.Name != "" {
@@ -204,7 +219,7 @@ func collectAvailableVariables(pkg *model.Package) []string {
 			variables = append(variables, arg.ValueHint)
 		}
 	}
-	
+
 	return variables
 }
 
@@ -228,7 +243,7 @@ func validatePackageTransport(transport *model.Transport, availableVariables []s
 			// Check if it's a template variable issue or basic URL issue
 			templateVars := extractTemplateVariables(transport.URL)
 			if len(templateVars) > 0 {
-				return fmt.Errorf("%w: template variables in URL %s reference undefined variables. Available variables: %v", 
+				return fmt.Errorf("%w: template variables in URL %s reference undefined variables. Available variables: %v",
 					ErrInvalidRemoteURL, transport.URL, availableVariables)
 			}
 			return fmt.Errorf("%w: %s", ErrInvalidRemoteURL, transport.URL)

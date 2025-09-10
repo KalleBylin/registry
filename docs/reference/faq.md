@@ -27,11 +27,7 @@ No. The MCP Registry stores metadata about MCP servers and references to where t
 
 ### Who should use the MCP Registry directly?
 
-The registry is designed for programmatic consumption by:
-
-- MCP client applications (Claude Desktop, Cline, etc.)
-- Server aggregators (Smithery, PulseMCP, etc.)
-- NOT individual end-users (they should use MCP clients or aggregator UIs)
+The registry is primarily designed for programmatic consumption by subregistries (Smithery, PulseMCP, Docker Hub, Anthropic, GitHub, etc.). It is NOT currently intended for individual clients or end-users (they should use subregistries).
 
 ### Will there be feature X?
 
@@ -59,6 +55,7 @@ No. While open source code is encouraged, it is not required for either locally 
 - PyPI (Python packages)
 - NuGet.org (.NET packages)
 - GitHub Container Registry (GHCR)
+- Docker Hub
 
 More can be added as the community desires; feel free to open an issue if you are interested in building support for another registry.
 
